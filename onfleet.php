@@ -29,8 +29,6 @@
     //Filter json array with parameters | Check if the order's address is in Australia and if the postcode is in Sydney
     foreach ($product_rec as $entry) {
 	    
-        if ($entry->billing_address->country == 'Australia' && ($entry->billing_address->zip >= '2000') && ($entry->billing_address->zip <= '2778')){
-	    
 	    // Do a counting of the orders with the status "Awaiting Pickup 
 	    $orders_count = count($product_rec);
         $orders_status = $entry->status;
@@ -107,6 +105,9 @@
         //Testing if it's working by displaying different infos
         echo "$recipient_first_name $recipient_last_name lives in Australia, address is $address, phone number is $recipient_phone";
         
+        // Only posts to Onfleet if the country of the Shipping address is Australia and the zip code is within Sydney area
+        if ($country == 'Australia' && ($zip >= '2000') && ($zip <= '2778')){
+	                
         // Post a request to Onfleet with all parameters
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
