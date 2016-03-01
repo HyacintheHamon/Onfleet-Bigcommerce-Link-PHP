@@ -102,11 +102,11 @@
         $recipient_name = "$first_name $last_name";
         $address = "$street1 $street2, $city, $zip, $state, $country";
         
-        //Testing if it's working by displaying different infos
-        echo "$recipient_first_name $recipient_last_name lives in Australia, address is $address, phone number is $recipient_phone";
-        
         // Only posts to Onfleet if the country of the Shipping address is Australia and the zip code is within Sydney area
         if ($country == 'Australia' && ($zip >= '2000') && ($zip <= '2778')){
+	    
+	    //Testing if it's working by displaying different infos
+        echo "$first_name $last_name lives in Australia, address is $address, phone number is $recipient_phone";
 	                
         // Post a request to Onfleet with all parameters
         $ch = curl_init();
@@ -134,11 +134,8 @@
         
         } else {
 	    
-	    // The customers that don't have an billing address in Australia
-	    $recipient_first_name = $entry->billing_address->first_name;
-	    $recipient_last_name = $entry->billing_address->last_name;
 	    
-	    // echo "$recipient_first_name $recipient_last_name doesn't live in Australia";
+	    echo "$first_name $last_name doesn't live in Australia";
 	    echo '<pre>';
 	    
         }
