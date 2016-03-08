@@ -1,9 +1,9 @@
  <?php
 	 
     //Bigcommerce API credentials
-    $username = 'zipmate'; 
-    $api_bigcommerce = 'f2e6778081753da6f86bffcbea05fbe0d48e1d13'; 
-    $api_onfleet = '93863c18ff266929e791955c43ad8afb';
+    $username = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXX'; 
+    $api_bigcommerce = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXX'; 
+    $api_onfleet = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXX';
     
     // Onfleet API url  
     $url = "https://onfleet.com/api/v2/tasks";
@@ -42,14 +42,14 @@
         $recipient_street2 = $entry->billing_address->street_2;
         //Address has been divided into different variables, need to reconstruct it into a string for Onfleet 
         $destination_notes = $entry->staff_notes;
-        $recipient_notes = 'Cloth & Co customer';
+        $recipient_notes = 'XXXXXXX customer';
         // $complete_before = '1456769460000'; // Timestamp in milliseconds
         $order_id = $entry->id;
         $store_parse_query = parse_url($customer_url);
         $store_id = $store_parse_query[host];
         
         // Custom url that finds the items in an order
-        $items_url = "https://store-dvkzl7w.mybigcommerce.com/api/v2/orders/$order_id/products.json";
+        $items_url = "https://store-xxxxxxx.mybigcommerce.com/api/v2/orders/$order_id/products.json";
         // intiate curl request
         $curl_item = curl_init();
         curl_setopt($curl_item, CURLOPT_URL, $items_url);
@@ -72,7 +72,7 @@
         $order_notes = "Order #$order_id from $store_id, $items_names";
         
         // Get shipping address
-        $items_shipping_address = "https://store-dvkzl7w.mybigcommerce.com/api/v2/orders/$order_id/shipping_addresses.json";
+        $items_shipping_address = "https://store-xxxxxxx.mybigcommerce.com/api/v2/orders/$order_id/shipping_addresses.json";
         
         // initiate curl request
         $curl_shipping_address = curl_init();
